@@ -18,8 +18,24 @@ router.get("/:id", validateUserId(), (req, res) => {
     res.json(req.user)
 })
 
-router.get("/", (req, res) => {
-    users.insert()
+router.post("/", (req, res) => {
+    users.insert(req.body)
+        .then(newPost => {
+            res.status(201).json(newPost)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+})
+
+router.put("/:id", (req, res) => {
+    users.update(req.params.id, req.body)
+        .then(data => {
+            res.status(200).json({ message: "Sucessful update" })
+        })
+        .catch(err => {
+            console.log(err)
+        })
 })
 
 module.exports = router
