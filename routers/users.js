@@ -38,4 +38,11 @@ router.put("/:id", (req, res) => {
         })
 })
 
+router.delete("/:id", (req, res) => {
+    users.remove(req.params.id)
+        .then(data => {
+            res.status(204).json({ message: "Successfully deleted" })
+        }) 
+})
+
 module.exports = router
