@@ -11,8 +11,6 @@ const postsRouter = require("./routers/posts")
 const server = express()
 
 server.use(logger())
-server.use(validateUser())
-server.use(validatePost())
 
 server.use(express.json())
 server.use("/", welcomeRouter)

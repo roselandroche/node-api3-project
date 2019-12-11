@@ -20,7 +20,7 @@ function validateUserId() {
 
 function validateUser() {
     return (req, res, next) => {
-        if(!req.body.name) {
+        if(!req.body) {
             res.status(400).json({ message: "Missing required name field."})
         }
         next()

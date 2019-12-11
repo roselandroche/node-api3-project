@@ -1,5 +1,6 @@
 const express = require("express")
 const posts = require("../posts/postDb")
+const { validatePost } = require("../middleware/validatePost")
 
 const router = express.Router()
 
@@ -11,6 +12,10 @@ router.get("/", (req, res) => {
         .catch(err => {
             res.status(500).json({ message: `Resources were not found.`})
         })
+})
+
+router.get("/:id", (req, res) => {
+    
 })
 
 module.exports = router
